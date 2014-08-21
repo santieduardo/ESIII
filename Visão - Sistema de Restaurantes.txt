@@ -1,0 +1,12 @@
+Acordo sobre o problema que será resolvido
+- O problema é a falta de agilidade(tempo) na busca dos usuários por restaurantes em determinadas regiões que geralmente não conhecem.
+
+Identificar Stakeholders
+- Empresa contratante (Adriano e Eduardo), empresa contratada (Mário e Jennifer), Mangan e usuários finais.
+
+Definir as principais características do sistema
+- O usuário pode buscar estabelecimentos para se alimentar, filtrando por uma determinada região sem  a necessidade de se registrar;
+- O usuário se registre, ele pode salvar os estabelecimentos em favoritos;
+- Compartilhar um estabelecimento no facebook para seus amigos;
+- Fazer comentários dentro do sistema sobre o estabelecimento;
+- Avaliar o estabelecimento dando nota de 1 até 5;

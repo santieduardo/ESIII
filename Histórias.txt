@@ -1,0 +1,6 @@
+Histórias
+- caso o usuário queira apenas buscar um estabelecimento, não é necessário cadastro/autenticação
+- caso o usuário tenha cadastro, ele poderá adicionar restaurantes aos favoritos
+- caso o usuário queria postar no facebook que frenquentou o estabelecimento, ele poderá
+- o usuário pode escrever resenhas sobre o restaurante
+- o usuário pode dar nota para o restaurante
