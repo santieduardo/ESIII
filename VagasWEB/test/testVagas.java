@@ -2,6 +2,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import fspoa.vagas.Cidade;
 import fspoa.vagas.Curso;
 
 public class testVagas {
@@ -56,6 +57,30 @@ public class testVagas {
 		curso.setId(-15);
 		
 		assertEquals(0, curso.getId());
+	}
+	
+	@Test
+	public void testCursoString(){
+		//TODO verificar teste
+		Curso curso = new Curso();
+		curso.setId(Integer.parseInt(String.valueOf("Recursos Humanos")));
+		
+		assertEquals(0, curso.getId());
+	}
+	
+	@Test
+	public void testIdIsZero(){
+		Curso curso = new Curso();
+
+		Cidade cidade = new Cidade();
+
+		curso.setId(1);
+
+		cidade.setId(0);
+		
+		assertEquals(0, cidade.getId());
+
+		assertEquals(1, curso.getId());
 	}
 
 }
