@@ -1,6 +1,5 @@
-*{
-	margin: 0px;
-}
+body { margin: 0; background-color: #669; } 
+h1 { margin: 0; } 
 
 header{
 
@@ -10,7 +9,7 @@ header{
 	text-align: center;
 }
 
-main{
+main {
 
 	width: 100%;
 	height: 450px;
@@ -24,6 +23,7 @@ main{
 
 		width: 50%;
 		height: 100%;
+		float: left;
 		
 	}
 		section#userData article{
@@ -35,18 +35,17 @@ main{
 
 	section#vagas{
 		width: 50%;
-		height: 100%;
 	}
 
 		section#vagas{
-			width: 100%;
+			width: 50%;
 			height: 100%;
 			text-align: center;
 			float: left;
+			
 		}
 
-footer{
-
+footer {
 	width: 100%;
 	height: 120px;
 	background-color: #669;

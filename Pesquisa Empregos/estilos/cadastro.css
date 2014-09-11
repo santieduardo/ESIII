@@ -16,7 +16,7 @@ main{
 	height: 750px;
 	background-color: #ABCDEF;
 	margin: auto;
-	text-align: center;
+	
 
 }	
 
@@ -24,8 +24,9 @@ main{
 
 			width: 100%;
 			height: 100%;
-			background-color: #AB8237;
+			background-color: white;
 			margin: auto;
+			margin: 15px 0;
 
 		}
 		section#cursos article{
@@ -48,3 +49,10 @@ footer{
 	text-align: center;
 
 }
+#dados article{width: 700px; margin: auto;}
+#dados label{width: 100px; float: left; text-align: right; padding: 0 12px 0 0; font:16px Tahoma, Geneva, sans-serif;}
+#dados select{width: 307px; border: 1px solid #ccc; height: 23px; padding: 0 0 0 5px; font: 18px tahoma;}
+#dados input{width: 300px; border: 1px solid #ccc; height: 23px; padding: 0 0 0 5px; font: 18px tahoma;}
+#dados li{margin: 15px 0;}
+#dados button{float: left; width: 307px; height: 50px; margin: 0 0 0 153px;}
+
