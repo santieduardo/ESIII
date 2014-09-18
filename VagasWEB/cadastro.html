@@ -1,106 +1,87 @@
 <!DOCTYPE html>
 <html>
-<head>
-
-	<title>Pesquisa de Vagas de Estágios</title>
-	<meta charset="utf-8"/>
-
-	<style type="text/css">
-	@import "estilos/cadastro.css";
-	</style>
-
-</head>
-<body>
-
-	<header>
+	<head>
+		<title>Pesquisa de Vagas de Estágios</title>
+		<meta charset="utf-8"/>
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	</head>
+	<body>
+		<header>
 			<h1>Vagas de Estágios Tabajara</h1>
-	</header>
-
-	<main>
-
-		<section id="dados">
-
-			<article>
-				
-				<h2>Dados Pessoais</h2>
-				<form action="cadastro.php" name="cadastro" method="post">
-				<ul type="none">
-					<li>
-						<label for="nome">Nome: </label>
-						<input type="label" name="nome" id="nome"/>
-					</li>
-					<li>
-						<label for="endereco">Endereço: </label>
-						<input type="label" name="endereco" id="endereco">
-					</li>
-					<li>
-						<label for="email">E-mail: </label>
-						<input type="label" name="email" id="email">
-					</li>
-					<li>
-						<label for="senha">Senha: </label>
-						<input type="password" name="senha" id="senha">
-					</li>
-					<li>
-						<label for="confirmasenha">Confimar: </label>
-						<input type="password" name="confirmasenha" id="confirmasenha">
-					</li>
-					<li>
-						<label for="idade">Idade:</label>
-						<select name="idade" id="curso">
-							<option value="16">16</option>
-							<option value="17">17</option>
-							<option value="18">18</option>
-							<option value="19">19</option>
-							<option value="20">20</option>
-							<option value="21">21</option>
-						</select>
-						
-					</li>
-					<li>
-						<label for="curso">Curso: </label>
-
-						<select name="curso" id="curso">
-
-							<option value="ads">Análise e Desenvolvimento de Sistemas</option>
-							<option value="redes">Redes</option>
-							<option value="moda">Moda</option>
-							<option value="gastronomia">Gastronomia</option>
-
-						</select>
-				
-					</li>
-					<li>
-						<label for="cidade">Cidade: </label>
-						<select name="cidade" id="cidade">
-
-							<option value="poa">Porto Alegre</option>
-							<option value="toronto">Toronto</option>
-							<option value="riogrande">Rio Grande</option>
-
-						</select>
-				
-					</li>
-				</ul>
-				
-				<button type="submit" name="enviar" id="enviar" value="Enviar">Cadastrar</button>
-				</form>
-
-
-				
-
-			</article>
-		</section>
-
+		</header>
 	
-	</main>
+		<main>
+			<section id="dados">
+				<article>
+					<div class="row">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
+						<form role="form" action="cadastro.php" method="post">
+							<div class="form-group">
+								<label for="label-nome">Nome</label>
+								<input type="text" class="form-control" name="nome" id="label-nome" placeholder="Insira seu nome">
+							 </div>
+							 <div class="form-group">
+								<label for="label-endereco">Endereço</label>
+								<input type="text" class="form-control" name="endereco" id="label-endereco" placeholder="Insira seu endereço">
+							 </div>
+							 <div class="form-group">
+								<label for="label-email">E-mail</label>
+								<input type="email" class="form-control" name="email" id="label-email" placeholder="Insira seu E-mail">
+							 </div>
+							 <div class="form-group">
+								<label for="label-senha">Senha</label>
+								<input type="password" class="form-control" name="senha" id="label-senha" placeholder="Insira sua senha">
+							 </div>
+							 <div class="form-group">
+								<label for="label-confirmasenha">Confirmar Senha</label>
+								<input type="password" class="form-control" name="confirmasenha" id="label-confirmasenha" placeholder="Repita sua senha">
+							 </div>
+							 <div class="form-group">
+								<label for="label-idade">Idade</label>
+								 <select name="idade" id="label-idade" class="form-control">
+								  <option>16</option>
+								  <option>17</option>
+								  <option>18</option>
+								  <option>19</option>
+								  <option>20</option>
+								  <option>21</option>
+								  <option>22</option>
+								</select>
+								</div>
+								<div class="form-group">
+									<label for="label-curso">Curso</label>
+									<select name="curso" id="label-curso" class="form-control">
+										<option value="ads">Análise e Desenvolvimento de Sistemas</option>
+										<option value="redes">Redes</option>
+										<option value="moda">Moda</option>
+										<option value="gastronomia">Gastronomia</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="label-cidade">Cidade</label>
+									<select name="cidade" id="label-cidade" class="form-control">
+										<option value="poa">Porto Alegre</option>
+										<option value="toronto">Toronto</option>
+										<option value="riogrande">Rio Grande</option>
+									</select>
+								</div>
+								<button type="submit" class="btn btn-success pull-right">		
+									<span class="glyphicon glyphicon-ok"></span>
+									Enviar
+								</button>
+						</form>
+					</div>
+					<div class="col-md-4"></div>
+					</div>
+				</article>
+			</section>
+		</main>
 
-	<footer>
+		<footer>
 
 		
 
-	</footer>
-
-
-</body>
+		</footer>
+	</body>
 </html>
