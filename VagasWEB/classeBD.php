@@ -18,7 +18,7 @@
 				VALUES ('$nome', '$endereco', '$email', '$senha', '$idade', '$curso', '$cidade')";
 				$resultado = mysql_query($inserir) or die ("Não foi possível inserir o usuário");
 				//echo"Cadastro efetuado com sucesso !";
-				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=vagas.html'>";
+				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=login.html'>";
 			}
 		}
 
@@ -34,6 +34,7 @@
 				$validacao = 1;
 				$_SESSION['email'] = $email;
 				$_SESSION['validacao'] = $validacao;
+				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=vagas.html'>";
 			}
 		}
 
