@@ -34,10 +34,21 @@
 				$validacao = 1;
 				$_SESSION['email'] = $email;
 				$_SESSION['validacao'] = $validacao;
-				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=vagas.html'>";
+				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=index.html'>";
 			}
 		}
 
+		static function getNome($email){
+			$consulta = "SELECT nome FROM usuarios WHERE email='$email'";
+			$resultado = mysql_query($consulta) or die ("Não foi possível encontrar seus dados");
+
+			if(mysql_num_rows($resultado) != 1){
+				echo "Dados incorretos";
+			}else{
+				echo $resultado;
+			}
+
+		}
 
 	}
 ?>
