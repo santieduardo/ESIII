@@ -1,11 +1,11 @@
 <?php
 	class FuncoesBD{
-		static function conectar(){
+		function conectar(){
 			$conexao = mysql_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
 						mysql_select_db("vagasweb") or die("Banco não encontrado");
 		}
 
-		static function incluirUsuario($nome, $endereco, $email, $senha, $confirmaSenha, $idade, $curso, $cidade){
+		function incluirUsuario($nome, $endereco, $email, $senha, $confirmaSenha, $idade, $curso, $cidade){
 			$consulta = "SELECT email FROM usuarios WHERE email='$email'";
 			$resultado = mysql_query($consulta) or die ("Não foi possivel verificar o e-mail");
 
@@ -22,7 +22,7 @@
 			}
 		}
 
-		static function logar($email, $senha){
+		function logar($email, $senha){
 			$consulta = "SELECT email, senha FROM usuarios WHERE email='$email' and senha='$senha'";
 			$resultado = mysql_query($consulta) or die ("Não foi possível encontrar seus dados");
 
@@ -38,7 +38,19 @@
 			}
 		}
 
-		static function getNome($email){
+		function getVagas(){
+			$consulta = "SELECT idVaga, nome, descricao, turno FROM vagas";
+			$resultado = mysql_query($consulta) or die ("Erro ao encontrar vagas");
+
+			while($registro=mysql_fetch_array($resultado)){
+				echo "Código: ".$registro['idVaga']."<br>";
+				echo "Título: ".$registro['nome']."<br>";
+				echo "Descrição: ".$registro['descricao']."<br>";
+				echo "Turno: ".$registro['turno']."<br><br><br>";
+			}
+		}
+
+		function getNome($email){
 			$consulta = "SELECT nome FROM usuarios WHERE email='$email'";
 			$resultado = mysql_query($consulta) or die ("Não foi possível encontrar seus dados");
 

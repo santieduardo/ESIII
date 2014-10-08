@@ -36,8 +36,16 @@
 						</div>
 					</div>
 					<div class="col-md-4">
+						<?php
+						include "classeBD.php";
+
+						$bd = new FuncoesBD();
+						$bd -> conectar();
+						$bd -> getVagas();
+						
+						?>
 					</div>
-					<div class="col-md-4"></div>
+					<!--<div class="col-md-4"></div> -->
 					</div>
 				</article>
 			</section>
