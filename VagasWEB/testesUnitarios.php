@@ -9,10 +9,60 @@
 			$curso = new Curso();
 
 			$curso->setId(34);
-			assertEquals(34, $curso->getId());
+			$this->assertEquals(34, $curso->getId());
 
 			$curso->setId(1);
-			assertEquals(1, $curso->getId());
+			$this->assertEquals(1, $curso->getId());
 		}
+
+
+	public function testCursoIdCidadeId() {
+
+		$curso = new Curso();
+
+		$cidade = new Cidade();
+
+		$curso->setId(1);
+
+		$cidade->setId(35);
+		
+		$this->assertEquals(35, $cidade->getId());
+
+		$this->assertEquals(1, $curso->getId());
+
+	}
+
+
+	public function testCursoNegativo(){
+		$curso = new Curso();
+		$curso->setId(-15);
+		
+		$this->assertEquals(0, $curso->getId());
+	}
+	
+	
+	public function testCursoString(){
+		
+		$curso = new Curso();
+		$curso->setId("Recursos Humanos");
+		
+		$this->assertEquals(0, $curso->getId());
+	}
+	
+	
+	public function testIdIsZero(){
+		$curso = new Curso();
+
+		$cidade = new Cidade();
+
+		$curso->setId(1);
+
+		$cidade->setId(0);
+		
+		$this->assertEquals(0, $cidade->getId());
+
+		$this->assertEquals(1, $curso->getId());
+	}
+
 	}
 ?>
