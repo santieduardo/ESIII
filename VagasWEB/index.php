@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<title>Pesquisa de Vagas de Estágios</title>
-		<meta charset="utf-8"/>
+		<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="estilos/geral.css" rel="stylesheet">
 	</head>
@@ -35,7 +36,7 @@
 						  </ul>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="vagas">
 						<?php
 						include "classeBD.php";
 

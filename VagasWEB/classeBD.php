@@ -43,10 +43,10 @@
 			$resultado = mysql_query($consulta) or die ("Erro ao encontrar vagas");
 
 			while($registro=mysql_fetch_array($resultado)){
-				echo "Código: ".$registro['idVaga']."<br>";
-				echo "Título: ".$registro['nome']."<br>";
-				echo "Descrição: ".$registro['descricao']."<br>";
-				echo "Turno: ".$registro['turno']."<br><br><br>";
+				echo "<span>Código: </span>".$registro['idVaga']."<br>";
+				echo "<span>Título: </span>".$registro['nome']."<br>";
+				echo "<span>Descrição: </span>".$registro['descricao']."<br>";
+				echo "<span>Turno: </span>".$registro['turno']."<br><br><br>";
 			}
 		}
 
