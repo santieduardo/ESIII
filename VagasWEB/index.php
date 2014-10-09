@@ -14,7 +14,7 @@
 			</div>
 			<div class="menus">
 				<ul class="nav nav-pills">
-					<li class="active"><a href="index.html">Vagas</a></li>
+					<li class="active"><a href="index.php">Vagas</a></li>
   					<li><a href="cadastro.html">Cadastro</a></li>
   					<li><a href="login.html">Login</a></li>
 				</ul>
@@ -35,6 +35,27 @@
 							<li class="list-group-item">Curso: </li>
 						  </ul>
 						</div>
+					<div>
+						<form>
+							<h4>Filtrar Vagas</h4>
+							<select name="cidade" id="label-cidade" class="form-control">
+								<option value="0">--- Selecione a Cidade ---</option>
+								<option value="1">Porto Alegre</option>
+								<option value="2">Rio Grande</option>
+								<option value="3">Toronto</option>
+							</select>
+							<br>
+							<select name="curso" id="label-cidade" class="form-control">
+								<option value="0">--- Selecione o Curso ---</option>
+								<option value="1">Análise e Desenvolvimento de Sistemas</option>
+								<option value="2">Moda</option>
+								<option value="3">Gastronomia</option>
+							</select>
+							<br>
+							<input type="submit" class="btn btn-info" name="buscar" id="buscar" value="Buscar Vagas" />
+							<br><br><br>
+						</form>
+					</div>
 					</div>
 					<div class="vagas">
 						<?php

@@ -1,7 +1,6 @@
 ﻿<?php
 	class FuncoesBD{
-<<<<<<< HEAD
-		
+	
 		private $conexao;
 
 		function conectar(){
@@ -12,15 +11,10 @@
 		}
 
 		function fecharConexao(){
-			mysqli_close($this->$conexao);
-=======
-		static function conectar(){
-			$conexao = mysql_connect("localhost", "root", "") or die ("Falha na conex�o com o Banco de Dados");
-						mysql_select_db("vagasweb") or die("Banco n�o encontrado");
->>>>>>> origin/master
+			mysqli_close($this->conexao);
 		}
 
-		static function incluirUsuario($nome, $endereco, $email, $senha, $confirmaSenha, $idade, $curso, $cidade){
+		function incluirUsuario($nome, $endereco, $email, $senha, $confirmaSenha, $idade, $curso, $cidade){
 			$consulta = "SELECT email FROM usuarios WHERE email='$email'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possivel verificar o e-mail");
 
@@ -37,7 +31,7 @@
 			}
 		}
 
-		static function logar($email, $senha){
+		function logar($email, $senha){
 			$consulta = "SELECT email, senha FROM usuarios WHERE email='$email' and senha='$senha'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possível encontrar seus dados");
 
@@ -49,19 +43,19 @@
 				$validacao = 1;
 				$_SESSION['email'] = $email;
 				$_SESSION['validacao'] = $validacao;
-				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=vagas.html'>";
+				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=index.php'>";
 			}
 		}
 
-<<<<<<< HEAD
 		function getVagas(){
-			$consulta = "SELECT idVaga, nome, descricao, turno FROM vagas";
+			$consulta = "SELECT idVaga, nome, descricao, cidades_idCidade, turno FROM vagas";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");
 
 			while($registro=mysqli_fetch_array($resultado)){
-				echo "<span>Código: </span>".$registro['idVaga']."<br>";
-				echo "<span>Título: </span>".($registro['nome'])."<br>";
-				echo "<span>Descrição: </span>".($registro['descricao'])."<br>";
+				echo "<span>Código da Vaga: </span>".$registro['idVaga']."<br>";
+				echo "<span>Título: </span>".$registro['nome']."<br>";
+				echo "<span>Descrição: </span>".$registro['descricao']."<br>";
+				echo "<span>Cidade: </span>".$registro['cidades_idCidade']."<br>";
 				echo "<span>Turno: </span>".$registro['turno']."<br><br><br>";
 			}
 		}
@@ -77,8 +71,7 @@
 			}
 
 		}
-=======
->>>>>>> origin/master
+
 
 	}
 ?>

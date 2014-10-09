@@ -11,9 +11,11 @@
 	if($senha == $confirmaSenha){
 		include "classeBD.php";
 
-		FuncoesBD::conectar();
-		FuncoesBD::incluirUsuario($nome, $endereco, $email, $senha, $confirmaSenha, $idade, $curso, $cidade);
-		FuncoesBD::fecharConexao();
+		$bd = new FuncoesBD();
+		$bd->conectar();
+		$bd->incluirUsuario($nome, $endereco, $email, $senha, $confirmaSenha, $idade, $curso, $cidade);
+		$bd->fecharConexao();
+		
 	}else{
 		echo "Insira as senhas iguais";
 	}

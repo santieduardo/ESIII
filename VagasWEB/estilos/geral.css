@@ -4,3 +4,26 @@
 .menus{
 	margin-left: 10px;
 }
+
+#dadosusuario{
+ 	margin-top: 10px;
+ 	margin-left: 10px;
+}
+
+.vagas{
+	text-align: center;
+	font-size: 16px;
+	text-transform: capitalize;
+}
+
+span{
+	font-weight: bold;
+}
+
+.link-secundario {
+	line-height: 34px;
+}
+
+h4{
+	text-align: center;
+}

@@ -4,7 +4,12 @@
 	
 	include "classeBD.php";
 	
-	FuncoesBD::conectar();
-	FuncoesBD::logar($email, $senha);
-	FuncoesBD::fecharConexao();
+	$bd = new FuncoesBD();
+	$bd->conectar();
+	$bd->logar($email, $senha);
+	$bd->fecharConexao();
+
+	//FuncoesBD::conectar();
+	//FuncoesBD::logar($email, $senha);
+	//FuncoesBD::fecharConexao();
 ?>
