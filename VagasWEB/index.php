@@ -43,6 +43,7 @@
 						$bd = new FuncoesBD();
 						$bd -> conectar();
 						$bd -> getVagas();
+						$bd -> fecharConexao();
 						
 						?>
 					</div>

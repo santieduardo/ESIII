@@ -13,6 +13,7 @@
 
 		FuncoesBD::conectar();
 		FuncoesBD::incluirUsuario($nome, $endereco, $email, $senha, $confirmaSenha, $idade, $curso, $cidade);
+		FuncoesBD::fecharConexao();
 	}else{
 		echo "Insira as senhas iguais";
 	}

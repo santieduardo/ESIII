@@ -6,5 +6,5 @@
 	
 	FuncoesBD::conectar();
 	FuncoesBD::logar($email, $senha);
-
+	FuncoesBD::fecharConexao();
 ?>
