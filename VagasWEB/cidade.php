@@ -8,7 +8,7 @@
 		}
 
 		public function setId($id){
-			if(self::checkIdCurso($id)){
+			if(checkIdCurso($id)){
 				$this->idCidade = $id;
 			}else{
 				$this->idCidade = 0;

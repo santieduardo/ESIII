@@ -1,11 +1,11 @@
 <?php
 	class FuncoesBD{
-		function conectar(){
+		static function conectar(){
 			$conexao = mysql_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
 						mysql_select_db("vagasweb") or die("Banco não encontrado");
 		}
 
-		function incluirUsuario($nome, $endereco, $email, $senha, $confirmaSenha, $idade, $curso, $cidade){
+		static function incluirUsuario($nome, $endereco, $email, $senha, $confirmaSenha, $idade, $curso, $cidade){
 			$consulta = "SELECT email FROM usuarios WHERE email='$email'";
 			$resultado = mysql_query($consulta) or die ("Não foi possivel verificar o e-mail");
 
@@ -22,7 +22,7 @@
 			}
 		}
 
-		function logar($email, $senha){
+		static function logar($email, $senha){
 			$consulta = "SELECT email, senha FROM usuarios WHERE email='$email' and senha='$senha'";
 			$resultado = mysql_query($consulta) or die ("Não foi possível encontrar seus dados");
 
@@ -34,33 +34,10 @@
 				$validacao = 1;
 				$_SESSION['email'] = $email;
 				$_SESSION['validacao'] = $validacao;
-				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=index.html'>";
+				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=vagas.html'>";
 			}
 		}
 
-		function getVagas(){
-			$consulta = "SELECT idVaga, nome, descricao, turno FROM vagas";
-			$resultado = mysql_query($consulta) or die ("Erro ao encontrar vagas");
-
-			while($registro=mysql_fetch_array($resultado)){
-				echo "<span>Código: </span>".$registro['idVaga']."<br>";
-				echo "<span>Título: </span>".$registro['nome']."<br>";
-				echo "<span>Descrição: </span>".$registro['descricao']."<br>";
-				echo "<span>Turno: </span>".$registro['turno']."<br><br><br>";
-			}
-		}
-
-		function getNome($email){
-			$consulta = "SELECT nome FROM usuarios WHERE email='$email'";
-			$resultado = mysql_query($consulta) or die ("Não foi possível encontrar seus dados");
-
-			if(mysql_num_rows($resultado) != 1){
-				echo "Dados incorretos";
-			}else{
-				echo $resultado;
-			}
-
-		}
 
 	}
 ?>

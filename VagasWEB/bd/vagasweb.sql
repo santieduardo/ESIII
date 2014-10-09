@@ -30,16 +30,7 @@ CREATE TABLE IF NOT EXISTS `cidades` (
   `idCidade` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL,
   PRIMARY KEY (`idCidade`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
-
---
--- Extraindo dados da tabela `cidades`
---
-
-INSERT INTO `cidades` (`idCidade`, `nome`) VALUES
-(1, 'Porto Alegre'),
-(2, 'Rio Grande'),
-(3, 'Toronto');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -51,16 +42,7 @@ CREATE TABLE IF NOT EXISTS `cursos` (
   `idCurso` int(11) NOT NULL AUTO_INCREMENT,
   `curso` varchar(50) NOT NULL,
   PRIMARY KEY (`idCurso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
-
---
--- Extraindo dados da tabela `cursos`
---
-
-INSERT INTO `cursos` (`idCurso`, `curso`) VALUES
-(1, 'ads'),
-(2, 'moda'),
-(3, 'gastronomia');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -78,16 +60,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `curso` varchar(45) NOT NULL,
   `cidade` varchar(45) NOT NULL,
   PRIMARY KEY (`idUsuarios`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`idUsuarios`, `nome`, `endereco`, `email`, `senha`, `idade`, `curso`, `cidade`) VALUES
-(2, 'Eduardo Santi', 'Av. Heitor Vieira, 1665', 'eduardoivaniskisanti@yahoo.com.br', 'Edu102030', '20', 'ads', 'toronto'),
-(3, 'adriano', 'dwsd', 'adriano@adriano.com', 'adriano', '16', 'ads', 'poa'),
-(4, 'Roberto Nunes', 'Rua da Zueira, 969', 'roberton@gmail.com', '123456', '19', 'ads', 'poa');
+(2, 'teste', 'rua A', 'teste@teste.com', '123456', '19', 'moda', 'riogrande'),
+(3, 'teste', 'tedsr', 'fsadf', '555', '16', 'ads', 'poa');
 
 -- --------------------------------------------------------
 
@@ -106,15 +87,7 @@ CREATE TABLE IF NOT EXISTS `vagas` (
   PRIMARY KEY (`idVaga`),
   KEY `fk_vagas_cidades_idx` (`cidades_idCidade`),
   KEY `fk_vagas_cursos1_idx` (`cursos_idCurso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Extraindo dados da tabela `vagas`
---
-
-INSERT INTO `vagas` (`idVaga`, `nome`, `descricao`, `cidades_idCidade`, `cursos_idCurso`, `status`, `turno`) VALUES
-(1, 'Desenvolvedor PHP', 'Auxiliar no desenvolvimento de novas aplicações', 1, 1, 1, 'manhã'),
-(2, 'Desenvolvedor Android', 'Desenvolvimento de novos aplicativos para clientes externos', 1, 1, 1, 'tarde');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Restrições para as tabelas dumpadas

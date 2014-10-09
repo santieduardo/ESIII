@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pesquisa de Vagas de Estágios</title>
+		<meta charset="utf-8"/>
+		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="estilos/geral.css" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<div class="page-header">
+  				<h1>Vagas de Estágio <small>encontre uma oportunidade</small></h1>
+			</div>
+			<div class="menus">
+				<ul class="nav nav-pills">
+  					<li class="active"><a href="cadastro.html">Cadastro de Vagas</a></li>  					
+  					<li><a href="login.html">Login</a></li>
+				</ul>
+			</div>
+		</header>
+	
+		<main>
+			<section id="dados">
+				<article>
+					<div class="row">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
+						<form role="form" action="cadastro.php" method="post">
+							<div class="form-group">
+								<label for="label-nome-vaga">Título da Vaga</label>
+								<input type="text" class="form-control" name="nome-vaga" id="label-nome-vaga" placeholder="Insira o título da vaga">
+							 </div>
+							 <div class="form-group">
+								<label for="label-curso-vaga">Curso da Vaga</label>
+								<select name="curso-vaga" id="label-curso-vaga" class="form-control">
+									<option value="ads">Análise e Desenvolvimento de Sistemas</option>
+									<option value="redes">Redes</option>
+									<option value="moda">Moda</option>
+									<option value="gastronomia">Gastronomia</option>
+								</select>
+							</div>
+							 <div class="form-group">
+									<label for="label-cidade-vaga">Cidade da Vaga</label>
+									<select name="cidade-vaga" id="label-cidade-vaga" class="form-control">
+										<option value="poa">Porto Alegre</option>
+										<option value="toronto">Toronto</option>
+										<option value="riogrande">Rio Grande</option>
+									</select>
+								</div>
+							 <div class="form-group">
+									<label for="label-turno-vaga">Turno da Vaga</label>
+									<select name="cidade" id="label-turno-vaga" class="form-control">
+										<option value="M">Manhã</option>
+										<option value="T">Tarde</option>
+										<option value="N">Noite</option>
+									</select>
+								</div>
+							 <div class="form-group">
+								<label for="label-desc-vaga">Descrição da Vaga</label>
+								<input type="text" class="form-control" name="desc-vaga" id="label-desc-vaga" placeholder="Insira uma breve descrição da vaga">
+							 </div>
+
+							<button type="submit" class="btn btn-success pull-right">		
+								<span class="glyphicon glyphicon-ok"></span>
+								Enviar
+							</button>
+						</form>
+					</div>
+					<div class="col-md-4"></div>
+					</div>
+				</article>
+			</section>
+		</main>
+
+		<footer>
+
+		
+
+		</footer>
+	</body>
+</html>
