@@ -36,13 +36,33 @@
 						  </ul>
 						</div>
 					<div>
-						<form>
+						<?php
+							include_once "classeBD.php";
+							$bd = new FuncoesBD();
+							$bd->conectar();
+							$query = mysql_query("SELECT idCidade, municipio FROM cidades");
+						?>
+
+						<form action="" method="post">
 							<h4>Filtrar Vagas</h4>
 							<select name="cidade" id="label-cidade" class="form-control">
 								<option value="0">--- Selecione a Cidade ---</option>
-								<option value="1">Porto Alegre</option>
+								
+								<?php
+
+									while ($municipio = mysql_fetch_array($query)) { ?> 
+																									
+										<option value="<?php echo $municipio['idCidade']; ?>"><?php echo $municipio['municipio']; ?></option>	
+										
+
+								<?php } 
+									$bd->fecharConexao();
+								?>
+
+								<!--<option value="1">Porto Alegre</option>
 								<option value="2">Rio Grande</option>
 								<option value="3">Toronto</option>
+								-->
 							</select>
 							<br>
 							<select name="curso" id="label-cidade" class="form-control">
@@ -59,8 +79,8 @@
 					</div>
 					<div class="vagas">
 						<?php
-						include "classeBD.php";
-
+						
+						include_once "classeBD.php";
 						$bd = new FuncoesBD();
 						$bd -> conectar();
 						$bd -> getVagas();

@@ -8,18 +8,19 @@
 		}
 
 		public function setId($id){
-			if(self::checkIdCurso($id)){
-				$this->idCidade = $id;
-			}else{
-				$this->idCidade = 0;
-			}
+
+			self::checkIdCurso($id);
+			$this->idCidade = $id;
+			
 		}
 
-		public function checkIdCurso($id){
-			if($id > 0){
-				return true;
+		public function checkIdCurso($id)
+		{
+			if($id <= 0){
+				throw new Exception("Codigo inválido", 1);
+				
 			}
-			return false;
+			
 		}
 	}
 ?>

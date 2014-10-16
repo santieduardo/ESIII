@@ -48,19 +48,31 @@
 		}
 
 		function getVagas(){
-			$consulta = "SELECT idVaga, nome, descricao, cidades_idCidade, turno FROM vagas";
-			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");
+			$consulta = "SELECT vagas.idVaga, vagas.nome, vagas.descricao, vagas.cidades_idCidade, vagas.turno, cidades.municipio FROM vagas
+						 INNER JOIN cidades 
+						 ON vagas.cidades_idCidade = cidades.idCidade";
+			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");		
 
 			while($registro=mysqli_fetch_array($resultado)){
-				echo "<span>Código da Vaga: </span>".$registro['idVaga']."<br>";
+				echo "<span>Código Vaga: </span>".$registro['idVaga']."<br>";
 				echo "<span>Título: </span>".$registro['nome']."<br>";
 				echo "<span>Descrição: </span>".$registro['descricao']."<br>";
-				echo "<span>Cidade: </span>".$registro['cidades_idCidade']."<br>";
+				echo "<span>Cidade: </span>".$registro['municipio']."<br>";
 				echo "<span>Turno: </span>".$registro['turno']."<br><br><br>";
 			}
+
 		}
 
-		function getNome($email){
+		function getCidades(){
+
+			$consulta = "SELECT municipio FROM cidades";
+			$resultado = mysqli_fetch_array($this->conexao, $consulta) or die ("Erro ao encontrar cidade");
+
+			return $resultado;
+			
+		}
+
+		function  getNome($email){
 			$consulta = "SELECT nome FROM usuarios WHERE email='$email'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possível encontrar seus dados");
 
