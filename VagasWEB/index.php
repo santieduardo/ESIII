@@ -3,7 +3,9 @@
 	<head>
 		<title>Pesquisa de Vagas de Estágios</title>
 		<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="estilos/geral.css" rel="stylesheet">
 	</head>
@@ -45,21 +47,15 @@
 							$query = mysql_query("SELECT idCidade, municipio FROM cidades");
 						?>
 
-						<form action="" method="post">
+						<form action="filtrarvagas.php" method="post">
 							<h4>Filtrar Vagas</h4>
 							<select name="cidade" id="label-cidade" class="form-control">
-								<option value="0">--- Selecione a Cidade ---</option>
-								
+								<option value="0">-- Selecione a Cidade --</option>								
 								<?php
 
-									while ($municipio = mysql_fetch_array($query)) { ?> 
-																									
-										<option value="<?php echo $municipio['idCidade']; ?>"><?php echo $municipio['municipio']; ?></option>	
-										
-
-								<?php } 
-									
-								?>
+									while ($municipio = mysql_fetch_array($query)) { ?> 																									
+										<option value="<?php echo $municipio['idCidade']; ?>"><?php echo $municipio['municipio']; ?></option>
+								<?php } ?>
 
 							</select>
 							<br>
@@ -67,7 +63,7 @@
 								$query = mysql_query("SELECT idCurso, curso FROM cursos");
 							?>
 							<select name="curso" id="label-cidade" class="form-control">
-								<option value="0">--- Selecione o Curso ---</option>
+								<option value="0">-- Selecione o Curso --</option>
 								<?php
 
 									while ($curso = mysql_fetch_array($query)) { ?> 
@@ -75,9 +71,7 @@
 										<option value="<?php echo $curso['idCurso']; ?>"><?php echo $curso['curso']; ?></option>	
 										
 
-								<?php } 
-									
-								?>
+								<?php } ?>
 							</select>
 							<br>
 							<input type="submit" class="btn btn-info" name="buscar" id="buscar" value="Buscar Vagas" />
@@ -96,7 +90,7 @@
 						
 						?>
 					</div>
-					<!--<div class="col-md-4"></div> -->
+					<div class="col-md-4"></div>
 					</div>
 				</article>
 			</section>
@@ -104,7 +98,7 @@
 
 		<footer>
 
-		
+		<br><br>
 
 		</footer>
 	</body>

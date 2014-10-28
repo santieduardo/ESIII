@@ -13,7 +13,22 @@
 .vagas{
 	text-align: center;
 	font-size: 16px;
-	text-transform: capitalize;
+}
+
+/*.dtl-vagas{
+	border: 1px solid;
+	width: 600px;
+	margin: 0 auto;
+}*/
+
+.dtl-vagas{
+	background: #bbb;
+	height: 1px;
+	width: 640px;
+	position: relative;
+	left: 490px;
+	margin-bottom: 15px;
+	margin-top: -25px;
 }
 
 span{

@@ -51,16 +51,39 @@
 			$consulta = "SELECT vagas.idVaga, vagas.nome, vagas.descricao, vagas.cidades_idCidade, vagas.turno, cidades.municipio FROM vagas
 						 INNER JOIN cidades 
 						 ON vagas.cidades_idCidade = cidades.idCidade";
-			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");		
+			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");
 
 			while($registro=mysqli_fetch_array($resultado)){
+				//echo "<div class='dtl-vagas'>";	
 				echo "<span>Código Vaga: </span>".$registro['idVaga']."<br>";
 				echo "<span>Título: </span>".$registro['nome']."<br>";
 				echo "<span>Descrição: </span>".$registro['descricao']."<br>";
 				echo "<span>Cidade: </span>".$registro['municipio']."<br>";
 				echo "<span>Turno: </span>".$registro['turno']."<br><br><br>";
+				echo "<div class='dtl-vagas'>";
+				echo "</div>";
 			}
 
+		}
+
+		//bugzão na query
+		function filtarVagas($cidade, $curso){
+			$consulta = "SELECT vagas.idVaga, vagas.nome, vagas.descricao, vagas.cidades_idCidade, vagas.turno, cidades.municipio
+						FROM vagas, cidades
+						WHERE vagas.cidades_idCidade = '$cidade'";
+
+			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");
+
+			while($registro=mysqli_fetch_array($resultado)){
+				//echo "<div class='dtl-vagas'>";	
+				echo "<span>Código Vaga: </span>".$registro['idVaga']."<br>";
+				echo "<span>Título: </span>".$registro['nome']."<br>";
+				echo "<span>Descrição: </span>".$registro['descricao']."<br>";
+				echo "<span>Cidade: </span>".$registro['municipio']."<br>";
+				echo "<span>Turno: </span>".$registro['turno']."<br><br><br>";
+				echo "<div class='dtl-vagas'>";
+				echo "</div>";
+			}
 		}
 
 		function getCidades(){
@@ -72,7 +95,7 @@
 			
 		}
 
-		function  getNome($email){
+		function getNome($email){
 			$consulta = "SELECT nome FROM usuarios WHERE email='$email'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possível encontrar seus dados");
 
@@ -83,7 +106,6 @@
 			}
 
 		}
-
 
 	}
 ?>
