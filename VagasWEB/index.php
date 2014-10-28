@@ -38,8 +38,10 @@
 					<div>
 						<?php
 							include_once "classeBD.php";
-							$bd = new FuncoesBD();
-							$bd->conectar();
+							mysql_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
+							mysql_select_db("vagasweb") or die("Banco não encontrado");
+
+							mysql_set_charset("utf8");
 							$query = mysql_query("SELECT idCidade, municipio FROM cidades");
 						?>
 
@@ -56,20 +58,26 @@
 										
 
 								<?php } 
-									$bd->fecharConexao();
+									
 								?>
 
-								<!--<option value="1">Porto Alegre</option>
-								<option value="2">Rio Grande</option>
-								<option value="3">Toronto</option>
-								-->
 							</select>
 							<br>
+							<?php
+								$query = mysql_query("SELECT idCurso, curso FROM cursos");
+							?>
 							<select name="curso" id="label-cidade" class="form-control">
 								<option value="0">--- Selecione o Curso ---</option>
-								<option value="1">Análise e Desenvolvimento de Sistemas</option>
-								<option value="2">Moda</option>
-								<option value="3">Gastronomia</option>
+								<?php
+
+									while ($curso = mysql_fetch_array($query)) { ?> 
+																									
+										<option value="<?php echo $curso['idCurso']; ?>"><?php echo $curso['curso']; ?></option>	
+										
+
+								<?php } 
+									
+								?>
 							</select>
 							<br>
 							<input type="submit" class="btn btn-info" name="buscar" id="buscar" value="Buscar Vagas" />
