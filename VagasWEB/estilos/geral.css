@@ -15,20 +15,28 @@
 	font-size: 16px;
 }
 
-/*.dtl-vagas{
-	border: 1px solid;
-	width: 600px;
-	margin: 0 auto;
-}*/
-
 .dtl-vagas{
+	border: 1px solid #999;
+	width: 600px;
+	height: 150px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	padding-top: 15px;
+	box-shadow: 3px 3px 5px #333;
+}
+
+.dtl-vagas .codigo-vaga{
+	font-weight: bolder;
+}
+
+/*.dtl-vagas{
 	background: #bbb;
 	height: 1px;
 	width: 640px;
 	position: relative;
 	left: 490px;
 	margin-bottom: 15px;
-	margin-top: -25px;
+	margin-top: -25px;*/
 }
 
 span{

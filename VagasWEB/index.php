@@ -90,7 +90,8 @@
 						
 						?>
 					</div>
-					<div class="col-md-4"></div>
+					<div class="col-md-4"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
 					</div>
 				</article>
 			</section>

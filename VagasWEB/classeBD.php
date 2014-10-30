@@ -53,20 +53,10 @@
 						 ON vagas.cidades_idCidade = cidades.idCidade";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");
 
-			while($registro=mysqli_fetch_array($resultado)){
-				//echo "<div class='dtl-vagas'>";	
-				echo "<span>Código Vaga: </span>".$registro['idVaga']."<br>";
-				echo "<span>Título: </span>".$registro['nome']."<br>";
-				echo "<span>Descrição: </span>".$registro['descricao']."<br>";
-				echo "<span>Cidade: </span>".$registro['municipio']."<br>";
-				echo "<span>Turno: </span>".$registro['turno']."<br><br><br>";
-				echo "<div class='dtl-vagas'>";
-				echo "</div>";
-			}
+			$this->displayVagas($resultado);
 
 		}
 
-		//bugzão na query
 		function filtarVagas($cidade, $curso){
 			$consulta = "SELECT vagas.idVaga, vagas.nome, vagas.descricao, vagas.cidades_idCidade, vagas.turno, cidades.municipio
 						from vagas inner join cidades on vagas.cidades_idcidade = cidades.idcidade 
@@ -75,14 +65,19 @@
 
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");
 
+			$this->displayVagas($resultado);
+			
+		}
+
+		function displayVagas($resultado){
 			while($registro=mysqli_fetch_array($resultado)){
-				//echo "<div class='dtl-vagas'>";	
-				echo "<span>Código Vaga: </span>".$registro['idVaga']."<br>";
-				echo "<span>Título: </span>".$registro['nome']."<br>";
-				echo "<span>Descrição: </span>".$registro['descricao']."<br>";
-				echo "<span>Cidade: </span>".$registro['municipio']."<br>";
-				echo "<span>Turno: </span>".$registro['turno']."<br><br><br>";
-				echo "<div class='dtl-vagas'>";
+				echo "<div class='dtl-vagas'>";	
+				echo "<div class='codigo-vaga'>".$registro['idVaga']."<br></div>";
+				echo $registro['nome']."<br>";
+				echo $registro['descricao']."<br>";
+				echo $registro['municipio']."<br>";
+				echo $registro['turno']."<br><br><br>";
+				//echo "<div class='dtl-vagas'>";
 				echo "</div>";
 			}
 		}
