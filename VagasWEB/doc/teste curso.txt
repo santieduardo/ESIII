@@ -1,0 +1,19 @@
+Eu candidato, gostaria de ver só vagas do meu curso.
+
+Entrada:
+Logar:
+id	nome			endereço				email								senha		data nasc	Curso									Cidade
+2	Eduardo Santi	Av. Heitor Vieira, 1665	eduardoivaniskisanti@yahoo.com.br	Edu102030	22/03/1994	Análise e Desenvolvimento de Sistemas	Viamão
+
+Estado:
+id	Nome Vaga				Descrição												idCid	idCur	Sta	turno 	
+1	Desenvolvedor PHP		Auxiliar no desenvolvimento de novas aplicações			1		1	 	1	manhã
+2	Desenvolvedor Android	Desenvolvimento de novos aplicativos para clientes...	1		1	 	1	tarde
+3	Chefe de Cozinha		Liderar a equipe de cozinheiros							2		3	 	1	manhã
+
+
+Saída:
+id	Nome Vaga				Descrição												idCid	idCur	Sta	turno 	
+1	Desenvolvedor PHP		Auxiliar no desenvolvimento de novas aplicações			1		1		1	manhã
+2	Desenvolvedor Android	Desenvolvimento de novos aplicativos para clientes...	1		1		1	tarde
+
