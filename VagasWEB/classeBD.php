@@ -100,7 +100,27 @@
 			}else{
 				echo $resultado;
 			}
-
+		}
+		
+		function getIdUsuario($id){
+			$consulta = "SELECT idUsuarios FROM usuarios";
+			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possível encontrar seus dados");
+			
+			if(mysqli_num_rows($resultado) != 1){
+				echo "Dados incorretos";
+			}else{
+				echo $resultado;
+			}
+		}
+		function getIdVaga($id){
+			$consulta = "SELECT idVaga FROM vagas";
+			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possível encontrar seus dados");
+			
+			if(mysqli_num_rows($resultado) != 1){
+				echo "Dados incorretos";
+			}else{
+				echo $resultado;
+			}
 		}
 
 	}

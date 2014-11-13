@@ -63,6 +63,19 @@
 
 		$this->assertEquals(1, $curso->getId());
 	}
-
+	
+	
+	//Eu candidato, gostaria de me candidatar a uma vaga.
+	public function testeSelecionaVaga(){
+		$usuario = new Usuario();
+		$vaga = new Vaga();
+		
+		
+		
+		
 	}
+}
+	
+	
+
 ?>
