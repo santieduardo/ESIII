@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 	require_once "cidade.php";
 	require_once "curso.php";
 
