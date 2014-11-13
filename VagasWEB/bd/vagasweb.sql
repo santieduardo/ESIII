@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 29-Out-2014 às 01:48
--- Versão do servidor: 5.6.16
--- PHP Version: 5.5.9
+-- Servidor: 127.0.0.1
+-- Tempo de Geração: 
+-- Versão do Servidor: 5.5.27
+-- Versão do PHP: 5.4.7
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `vagasweb`
+-- Banco de Dados: `vagasweb`
 --
 
 -- --------------------------------------------------------
@@ -28,18 +28,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `cidades` (
   `idCidade` int(11) NOT NULL AUTO_INCREMENT,
-  `municipio` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `nome` varchar(50) NOT NULL,
   PRIMARY KEY (`idCidade`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `cidades`
 --
 
-INSERT INTO `cidades` (`idCidade`, `municipio`) VALUES
-(1, 'Porto Alegre'),
-(2, 'Rio Grande'),
-(3, 'Toronto');
+INSERT INTO `cidades` (`idCidade`, `nome`) VALUES
+(1, ''),
+(2, ''),
+(3, '');
 
 -- --------------------------------------------------------
 
@@ -49,9 +49,9 @@ INSERT INTO `cidades` (`idCidade`, `municipio`) VALUES
 
 CREATE TABLE IF NOT EXISTS `cursos` (
   `idCurso` int(11) NOT NULL AUTO_INCREMENT,
-  `curso` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `curso` varchar(50) NOT NULL,
   PRIMARY KEY (`idCurso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `cursos`
@@ -70,15 +70,15 @@ INSERT INTO `cursos` (`idCurso`, `curso`) VALUES
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `idUsuarios` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `endereco` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `senha` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `idade` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `curso` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `cidade` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `nome` varchar(45) NOT NULL,
+  `endereco` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `senha` varchar(45) NOT NULL,
+  `idade` varchar(45) NOT NULL,
+  `curso` varchar(45) NOT NULL,
+  `cidade` varchar(45) NOT NULL,
   PRIMARY KEY (`idUsuarios`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `usuarios`
@@ -98,25 +98,37 @@ INSERT INTO `usuarios` (`idUsuarios`, `nome`, `endereco`, `email`, `senha`, `ida
 
 CREATE TABLE IF NOT EXISTS `vagas` (
   `idVaga` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `descricao` text COLLATE utf8_unicode_ci NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `descricao` text NOT NULL,
   `cidades_idCidade` int(11) NOT NULL,
   `cursos_idCurso` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `turno` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `turno` varchar(10) NOT NULL,
+  `publico` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idVaga`),
   KEY `fk_vagas_cidades_idx` (`cidades_idCidade`),
   KEY `fk_vagas_cursos1_idx` (`cursos_idCurso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `vagas`
 --
 
-INSERT INTO `vagas` (`idVaga`, `nome`, `descricao`, `cidades_idCidade`, `cursos_idCurso`, `status`, `turno`) VALUES
-(1, 'Desenvolvedor PHP', 'Auxiliar no desenvolvimento de novas aplicações', 1, 1, 1, 'manhã'),
-(2, 'Desenvolvedor Android', 'Desenvolvimento de novos aplicativos para clientes externos', 1, 1, 1, 'tarde'),
-(3, 'Chefe de Cozinha', 'Liderar a equipe de cozinheiros', 2, 3, 1, 'manhã');
+INSERT INTO `vagas` (`idVaga`, `nome`, `descricao`, `cidades_idCidade`, `cursos_idCurso`, `status`, `turno`, `publico`) VALUES
+(1, 'Desenvolvedor PHP', 'Auxiliar no desenvolvimento de novas aplicações', 1, 1, 1, 'manhã', 0),
+(2, 'Desenvolvedor Android', 'Desenvolvimento de novos aplicativos para clientes externos', 1, 1, 1, 'tarde', 0),
+(3, 'Chefe de Cozinha', 'Liderar a equipe de cozinheiros', 2, 3, 1, 'manhã', 0);
+
+--
+-- Restrições para as tabelas dumpadas
+--
+
+--
+-- Restrições para a tabela `vagas`
+--
+ALTER TABLE `vagas`
+  ADD CONSTRAINT `fk_vagas_cidades` FOREIGN KEY (`cidades_idCidade`) REFERENCES `cidades` (`idCidade`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_vagas_cursos1` FOREIGN KEY (`cursos_idCurso`) REFERENCES `cursos` (`idCurso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
