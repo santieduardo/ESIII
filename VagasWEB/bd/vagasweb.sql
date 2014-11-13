@@ -119,6 +119,20 @@ INSERT INTO `vagas` (`idVaga`, `nome`, `descricao`, `cidades_idCidade`, `cursos_
 (2, 'Desenvolvedor Android', 'Desenvolvimento de novos aplicativos para clientes externos', 1, 1, 1, 'tarde', 0),
 (3, 'Chefe de Cozinha', 'Liderar a equipe de cozinheiros', 2, 3, 1, 'manhã', 0);
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vagaselecionada`
+--
+
+CREATE TABLE IF NOT EXISTS `vagaselecionada` (
+  `idVaga` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  PRIMARY KEY (`idVaga`,`idUsuario`),
+  KEY `fk_vagas_has_usuarios_usuarios1_idx` (`idUsuario`),
+  KEY `fk_vagas_has_usuarios_vagas1_idx` (`idVaga`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Restrições para as tabelas dumpadas
 --
@@ -129,6 +143,13 @@ INSERT INTO `vagas` (`idVaga`, `nome`, `descricao`, `cidades_idCidade`, `cursos_
 ALTER TABLE `vagas`
   ADD CONSTRAINT `fk_vagas_cidades` FOREIGN KEY (`cidades_idCidade`) REFERENCES `cidades` (`idCidade`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_vagas_cursos1` FOREIGN KEY (`cursos_idCurso`) REFERENCES `cursos` (`idCurso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Restrições para a tabela `vagaselecionada`
+--
+ALTER TABLE `vagaselecionada`
+  ADD CONSTRAINT `fk_vagas_has_usuarios_vagas1` FOREIGN KEY (`idVaga`) REFERENCES `vagas` (`idVaga`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_vagas_has_usuarios_usuarios1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuarios`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
