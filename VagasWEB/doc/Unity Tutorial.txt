@@ -1,3 +1,0 @@
-Abrir o Bash
-Encontrar a pasta c/xampp/php
-Comando para rodar o teste: php phpunit.phar ~nome da classe~
