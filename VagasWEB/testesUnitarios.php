@@ -2,6 +2,8 @@
 
 	require_once "cidade.php";
 	require_once "curso.php";
+	require_once "usuario.php";
+	require_once "vaga.php";
 
 	class TestesUnitarios extends PHPUnit_Framework_Testcase{
 

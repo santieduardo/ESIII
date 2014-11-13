@@ -8,9 +8,6 @@
 			return $this->idCurso;
 		}
 
-
-		
-
 		public function checkIdCurso($id){
 			if($id > 0){
 				return true;
