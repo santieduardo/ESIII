@@ -75,20 +75,22 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `email` varchar(45) NOT NULL,
   `senha` varchar(45) NOT NULL,
   `idade` varchar(45) NOT NULL,
-  `curso` varchar(45) NOT NULL,
-  `cidade` varchar(45) NOT NULL,
-  PRIMARY KEY (`idUsuarios`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  `cidade` int(11) NOT NULL,
+  `curso` int(11) NOT NULL,
+  PRIMARY KEY (`idUsuarios`),
+  KEY `fk_usuarios_cidades1_idx` (`cidade`),
+  KEY `fk_usuarios_cursos1_idx` (`curso`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`idUsuarios`, `nome`, `endereco`, `email`, `senha`, `idade`, `curso`, `cidade`) VALUES
-(2, 'Eduardo Santi', 'Av. Heitor Vieira, 1665', 'eduardoivaniskisanti@yahoo.com.br', 'Edu102030', '20', 'ads', 'toronto'),
-(3, 'adriano', 'dwsd', 'adriano@adriano.com', 'adriano', '16', 'ads', 'poa'),
-(4, 'Roberto Nunes', 'Rua da Zueira, 969', 'roberton@gmail.com', '123456', '19', 'ads', 'poa'),
-(5, 'João', 'asasa', 'joao@joao.com', 'joao', '16', 'ads', 'poa');
+INSERT INTO `usuarios` (`idUsuarios`, `nome`, `endereco`, `email`, `senha`, `idade`, `cidade`, `curso`) VALUES
+(2, 'Eduardo Santi', 'Av. Heitor Vieira, 1665', 'eduardoivaniskisanti@yahoo.com.br', 'Edu102030', '20', 2, 1),
+(3, 'adriano', 'dwsd', 'adriano@adriano.com', 'adriano', '16', 3, 3),
+(4, 'Roberto Nunes', 'Rua da Zueira, 969', 'roberton@gmail.com', '123456', '19', 2, 3),
+(5, 'João', 'asasa', 'joao@joao.com', 'joao', '16', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -102,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `vagas` (
   `descricao` text NOT NULL,
   `cidades_idCidade` int(11) NOT NULL,
   `cursos_idCurso` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `turno` varchar(10) NOT NULL,
   `publico` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idVaga`),
@@ -115,17 +117,17 @@ CREATE TABLE IF NOT EXISTS `vagas` (
 --
 
 INSERT INTO `vagas` (`idVaga`, `nome`, `descricao`, `cidades_idCidade`, `cursos_idCurso`, `status`, `turno`, `publico`) VALUES
-(1, 'Desenvolvedor PHP', 'Auxiliar no desenvolvimento de novas aplicações', 1, 1, 1, 'manhã', 0),
-(2, 'Desenvolvedor Android', 'Desenvolvimento de novos aplicativos para clientes externos', 1, 1, 1, 'tarde', 0),
-(3, 'Chefe de Cozinha', 'Liderar a equipe de cozinheiros', 2, 3, 1, 'manhã', 0);
+(1, 'Desenvolvedor PHP', 'Auxiliar no desenvolvimento de novas aplicações', 1, 1, 1, 'manhã', 1),
+(2, 'Desenvolvedor Android', 'Desenvolvimento de novos aplicativos para clientes externos', 1, 1, 2, 'tarde', 1),
+(3, 'Chefe de Cozinha', 'Liderar a equipe de cozinheiros', 2, 3, 1, 'manhã', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `vagaselecionada`
+-- Estrutura da tabela `vaga_selecionada`
 --
 
-CREATE TABLE IF NOT EXISTS `vagaselecionada` (
+CREATE TABLE IF NOT EXISTS `vaga_selecionada` (
   `idVaga` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
   PRIMARY KEY (`idVaga`,`idUsuario`),
@@ -138,6 +140,13 @@ CREATE TABLE IF NOT EXISTS `vagaselecionada` (
 --
 
 --
+-- Restrições para a tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `fk_usuarios_cidades1` FOREIGN KEY (`cidade`) REFERENCES `cidades` (`idCidade`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_usuarios_cursos1` FOREIGN KEY (`curso`) REFERENCES `cursos` (`idCurso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Restrições para a tabela `vagas`
 --
 ALTER TABLE `vagas`
@@ -145,9 +154,9 @@ ALTER TABLE `vagas`
   ADD CONSTRAINT `fk_vagas_cursos1` FOREIGN KEY (`cursos_idCurso`) REFERENCES `cursos` (`idCurso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para a tabela `vagaselecionada`
+-- Restrições para a tabela `vaga_selecionada`
 --
-ALTER TABLE `vagaselecionada`
+ALTER TABLE `vaga_selecionada`
   ADD CONSTRAINT `fk_vagas_has_usuarios_vagas1` FOREIGN KEY (`idVaga`) REFERENCES `vagas` (`idVaga`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_vagas_has_usuarios_usuarios1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuarios`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
