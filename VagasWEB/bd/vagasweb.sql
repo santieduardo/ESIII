@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `cidades` (
   `idCidade` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) NOT NULL,
+  `municipio` varchar(50) NOT NULL,
   PRIMARY KEY (`idCidade`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
@@ -36,10 +36,10 @@ CREATE TABLE IF NOT EXISTS `cidades` (
 -- Extraindo dados da tabela `cidades`
 --
 
-INSERT INTO `cidades` (`idCidade`, `nome`) VALUES
-(1, ''),
-(2, ''),
-(3, '');
+INSERT INTO `cidades` (`idCidade`, `municipio`) VALUES
+(1, 'Porto Alegre'),
+(2, 'Rio Grande'),
+(3, 'Toronto');
 
 -- --------------------------------------------------------
 
