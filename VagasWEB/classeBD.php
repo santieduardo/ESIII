@@ -1,5 +1,5 @@
 ﻿<?php
-	class FuncoesBD{
+	class FuncoesBD {
 	
 		private $conexao;
 
@@ -13,7 +13,33 @@
 		function fecharConexao(){
 			mysqli_close($this->conexao);
 		}
-
+		
+		function getCidades(){
+			$sql = "SELECT idCidade, municipio FROM cidades ORDER BY municipio ASC";
+			$array = array();
+			if($resultado = mysqli_query($this->conexao, $sql)){
+			
+				while ($row = mysqli_fetch_array($resultado))
+					array_push($array, $row);
+				
+				mysqli_free_result($resultado);
+			}
+			return $array;
+		}
+		
+		function getCursos(){
+			$sql = "SELECT idCurso, curso FROM cursos ORDER BY curso ASC";
+			$array = array();
+			if($resultado = mysqli_query($this->conexao, $sql)){
+			
+				while ($row = mysqli_fetch_array($resultado))
+					array_push($array, $row);
+				
+				mysqli_free_result($resultado);
+			}
+			return $array;
+		}
+		
 		function incluirUsuario($nome, $endereco, $email, $senha, $confirmaSenha, $idade, $curso, $cidade){
 			$consulta = "SELECT email FROM usuarios WHERE email='$email'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possivel verificar o e-mail");
@@ -81,16 +107,7 @@
 				echo "</div>";
 			}
 		}
-
-		function getCidades(){
-
-			$consulta = "SELECT municipio FROM cidades";
-			$resultado = mysqli_fetch_array($this->conexao, $consulta) or die ("Erro ao encontrar cidade");
-
-			return $resultado;
-			
-		}
-
+		
 		function getNome($email){
 			$consulta = "SELECT nome FROM usuarios WHERE email='$email'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possível encontrar seus dados");
