@@ -71,9 +71,14 @@
 	public function testeSelecionaVaga(){
 		$usuario = new Usuario();
 		$vaga = new Vaga();
-		
-		
-		
+		if($usuario->testUsuario()){
+			$usuario->setId(2);
+			$this->assertEquals(2,$usuario->getId());
+		}
+		if($vaga->testVaga()){
+			$vaga->setId(1);
+			$this->assertEquals(1,$vaga->getId());
+		}
 		
 	}
 }
