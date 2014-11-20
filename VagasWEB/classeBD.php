@@ -57,11 +57,11 @@
 
 		}
 
-		function filtarVagas($cidade, $curso){
+		function filtarVagas($cidade="", $curso=""){
 			$consulta = "SELECT vagas.idVaga, vagas.nome, vagas.descricao, vagas.cidades_idCidade, vagas.turno, cidades.municipio
 						from vagas inner join cidades on vagas.cidades_idcidade = cidades.idcidade 
 						inner join cursos on vagas.cursos_idcurso = cursos.idcurso 
-						where cidades.idcidade = '$cidade' and cursos.idcurso = '$curso'";
+						where cidades.idcidade = '$cidade' or cursos.idcurso = '$curso'";
 
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");
 
