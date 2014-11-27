@@ -1,16 +1,17 @@
 <?php 
-require_once "vagas.php";
+require_once "classeBD.php";
 
 class TestesUnitarios extends PHPUnit_Framework_Testcase{
 
-	public function testVagas(){
-		$vagas = new Vagas();
-		$cursos = $vagas->getVagasPublicas();
+	public function testVagasPublicas(){
+		$db = new FuncoesBD();
+		$vagas = $db->getVagasPublicas();
 			
-		$this->assertEquals(3, sizeof($cursos));
+		$this->assertEquals(3, sizeof($vagas));
 			
-		$this->assertEquals(1, $cursos[0]->getId());
-		$this->assertEquals(2, $cursos[1]->getId());
+		$this->assertEquals(1, $vagas[0]->getId());
+		$this->assertEquals(2, $vagas[1]->getId());
+		$this->assertEquals(3, $vagas[2]->getId());
 	}
 }
 ?>

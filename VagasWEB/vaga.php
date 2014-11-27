@@ -1,22 +1,28 @@
 <?php 
-include_once "classeBD.php";
-	class Vaga{
-		private $idVaga;
-		
-		public function testVaga(){
-			$bd = new FuncoesBD();
-			$bd -> conectar();
-			$consulta = "SELECT idVaga FROM vagas";
-			$resultado = mysqli_query($bd -> conectar(), $consulta) or die ("Não foi possível encontrar seus dados");
-			if(mysqli_num_rows($resultado) > 0){
-					return true;
-				}
-			$bd -> fecharConexao();
-			}
 
-		public function getId(){
-			return $this->idVaga;
-		}
+	class Vaga{
+	
+	private $idVaga;
+	private $nome;
+	private $descricao;
+	private $status;
+	private $turno;
+	private $publico;
+	private $municipio;
+
+	function __construct($idVaga = "",$nome="",$descricao="", $status="", $turno="", $publico="", $municipio = "") {
+		$this->idVaga=$idVaga;
+		$this->nome=$nome;
+		$this->descricao=$descricao;
+		$this->status=$status;
+		$this->turno=$turno;
+		$this->publico=$publico;
+		$this->municipio=$municipio;
+	}
+		
+	public function getId(){
+		return $this->idVaga;
+	}
 
 		public function checkIdVaga($id){
 			if($id > 0){
@@ -31,8 +37,38 @@ include_once "classeBD.php";
 			}else{
 				$this->idVaga = 0;
 			}
-		}	
+		}
 
+		public function getStatus() {
+			return $this->status;
+		}
+		
+		public function getNome() {
+			return $this->nome;
+		}
+		
+		public function getDescricao() {
+			return $this->descricao;
+		}
+		
+		public function getTurno() {
+			return $this->turno;
+		}
+		
+		public function getMunicipio() {
+			return $this->municipio;
+		}
+		
+		public function setStatus($novoStatus) {
+			$this->status=$novoStatus;
+		}
+		
+		public function checkStatus($status){
+			if($status == 1){
+				return true;
+			}
+			return false;
+		}
 	}
 
 ?>

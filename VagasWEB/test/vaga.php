@@ -8,18 +8,21 @@
 	private $status;
 	private $turno;
 	private $publico;
+	private $municipio;
 
-		function __construct($idVaga="",$nome="",$descricao="", $status="", $turno="", $publico="") {
-			$this->idVaga=$idVaga;
-			$this->nome=$nome;
-			$this->descricao=$descricao;
-			$this->status=$status;
-			$this->turno=$turno;
-		}
+	function __construct($idVaga = "",$nome="",$descricao="", $status="", $turno="", $publico="", $municipio = "") {
+		$this->idVaga=$idVaga;
+		$this->nome=$nome;
+		$this->descricao=$descricao;
+		$this->status=$status;
+		$this->turno=$turno;
+		$this->publico=$publico;
+		$this->municipio=$municipio;
+	}
 		
-		public function getId(){
-			return $this->idVaga;
-		}
+	public function getId(){
+		return $this->idVaga;
+	}
 
 		public function checkIdVaga($id){
 			if($id > 0){
@@ -38,6 +41,22 @@
 
 		public function getStatus() {
 			return $this->status;
+		}
+		
+		public function getNome() {
+			return $this->nome;
+		}
+		
+		public function getDescricao() {
+			return $this->descricao;
+		}
+		
+		public function getTurno() {
+			return $this->turno;
+		}
+		
+		public function getMunicipio() {
+			return $this->municipio;
 		}
 		
 		public function setStatus($novoStatus) {

@@ -84,9 +84,9 @@
 						
 						include_once "classeBD.php";
 						$bd = new FuncoesBD();
-						$bd -> conectar();
-						$bd -> getVagas();
-						$bd -> fecharConexao();
+						//$bd -> conectar();
+						$bd->getVagas();
+						//$bd -> fecharConexao();
 						
 						?>
 					</div>
