@@ -26,6 +26,8 @@
 				return false;
 			
 		}
+		
+		$this->curso->setId();
 	}
 	
 ?>

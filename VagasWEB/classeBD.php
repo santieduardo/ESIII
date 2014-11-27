@@ -76,7 +76,7 @@
 		function getVagas(){
 			$consulta = "SELECT vagas.idVaga, vagas.nome, vagas.descricao, vagas.cidades_idCidade, vagas.turno, cidades.municipio FROM vagas
 						 INNER JOIN cidades 
-						 ON vagas.cidades_idCidade = cidades.idCidade";
+						 ON vagas.cidades_idCidade = cidades.idCidade WHERE vagas.publico = 1";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");
 
 			$this->displayVagas($resultado);
