@@ -91,9 +91,9 @@
 								include_once "classeBD.php";
 
 								$bd = new FuncoesBD();
-								$bd->conectar();
-								$bd->filtarVagas($cidade, $curso);
-								$bd->fecharConexao();
+							
+								$bd->filtrarVagas($cidade, $curso);
+								
 							}
 						?>
 					</div>

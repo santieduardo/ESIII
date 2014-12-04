@@ -113,15 +113,9 @@ require_once "vaga.php";
 
 		}
 
-		function filtarVagas($cidade="", $curso=""){
-			$consulta = "SELECT vagas.idVaga, vagas.nome, vagas.descricao, vagas.cidades_idCidade, vagas.turno, cidades.municipio
-						from vagas inner join cidades on vagas.cidades_idcidade = cidades.idcidade 
-						inner join cursos on vagas.cursos_idcurso = cursos.idcurso 
-						where cidades.idcidade = '$cidade' or cursos.idcurso = '$curso'";
-
-			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");
-
-			$this->displayVagas($resultado);
+		function filtrarVagas($cidade="", $curso=""){
+			
+			$this->displayVagas($this->getVagasCurso($curso));
 			
 		}
 
@@ -168,6 +162,29 @@ require_once "vaga.php";
 				echo $resultado;
 			}
 		}
-
+	
+		function getVagasCurso($curso){
+			$this->conectar();
+			
+			$consulta = "SELECT idVaga, nome, descricao, turno FROM vagas WHERE cursos_idCurso = " . mysqli_real_escape_string($this->conexao, $curso);
+			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");
+			$vagasCurso = array();
+			while($registro=mysqli_fetch_array($resultado)){
+				array_push($vagasCurso, new Vaga(
+					$registro['idVaga'],
+					$registro['nome'],
+					$registro['descricao'],
+					'a',
+					$registro['turno'],
+					'b',
+					'c'
+				));
+			}
+			
+			$this->fecharConexao();
+			
+			return $vagasCurso;
+		}
+	
 	}
 ?>

@@ -17,10 +17,10 @@ require_once "vaga.php";
 			mysqli_close($this->conexao);
 		}
 		
-		function getVagasCurso(){
+		function getVagasCurso($curso){
 			$this->conectar();
 			
-			$consulta = "SELECT idVaga, nome, descricao FROM vagas WHERE cursos_idCurso = 1";
+			$consulta = "SELECT idVaga, nome, descricao FROM vagas WHERE cursos_idCurso = " . mysqli_real_escape_string($this->conexao, $curso);
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Erro ao encontrar vagas");
 			$vagasCurso = array();
 			while($registro=mysqli_fetch_array($resultado)){
