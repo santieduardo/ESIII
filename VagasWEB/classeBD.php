@@ -61,16 +61,18 @@ require_once "vaga.php";
 		}
 
 		function logar($email, $senha){
-			$consulta = "SELECT email, senha FROM usuarios WHERE email='$email' and senha='$senha'";
+			$consulta = "SELECT idUsuarios, email, senha FROM usuarios WHERE email='$email' and senha='$senha'";
 			$resultado = mysqli_query($this->conexao, $consulta) or die ("Não foi possível encontrar seus dados");
 
 			if(mysqli_num_rows($resultado) != 1){
 				echo "Dados incorretos";
 			}else{
+				$registro=mysqli_fetch_array($resultado);
+
 				session_start();
-				session_name("secreta");
 				$validacao = 1;
 				$_SESSION['email'] = $email;
+				$_SESSION['idUsuarios'] = $registro['idUsuarios'];
 				$_SESSION['validacao'] = $validacao;
 				echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=index.php'>";
 			}
@@ -120,6 +122,7 @@ require_once "vaga.php";
 		}
 
 		function displayVagas($vagas){
+			session_start();
 			foreach($vagas as $vaga){
 				echo "<div class='dtl-vagas'>";	
 				echo "<div class='codigo-vaga'>".$vaga->getId()."<br></div>";
@@ -127,6 +130,9 @@ require_once "vaga.php";
 				echo $vaga->getDescricao()."<br>";
 				echo $vaga->getMunicipio()."<br>";
 				echo $vaga->getTurno()."<br><br><br>";
+				if(isset($_SESSION['idUsuarios'])){
+					echo '<a href="vagaUsuario.php?vagaId='.$vaga->getId().'&usuarioId=',$_SESSION['idUsuarios'],'" class"btn">candidatar-se</a>';
+				}
 				echo "</div>";
 			}
 		}
@@ -184,6 +190,19 @@ require_once "vaga.php";
 			$this->fecharConexao();
 			
 			return $vagasCurso;
+		}
+
+		public function inserirVagaUsuario($vaga, $usuario) {
+		
+			$this->conexao = mysqli_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
+			mysqli_select_db($this->conexao, "vagasweb") or die("Banco não encontrado");
+			mysqli_set_charset($this->conexao, "utf8");
+			
+			$consulta = "INSERT INTO vaga_selecionada(idVaga,idUsuario)VALUES($vaga, $usuario)";
+			$resultado = mysqli_query($this->conexao, $consulta) or die ("erro ao candidatar-se");
+			if($resultado){
+				return true;	
+			}		
 		}
 	
 	}
