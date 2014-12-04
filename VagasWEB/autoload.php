@@ -22,7 +22,7 @@ function autoload($names, $path = "./"){
 
 /* Classes */
 $models = array("vaga", "cidade", "curso", "usuario", "classeBD");
-$testes = glob(PATH . "/test/test*.php");
+$testes = glob(PATH . "test/test*.php");
 
 /* Autoload */
 autoload($models);
