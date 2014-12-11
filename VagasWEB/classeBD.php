@@ -204,6 +204,26 @@ require_once "vaga.php";
 				return true;	
 			}		
 		}
+
+		public function retornaPainelUsuario(){
+
+									
+							mysql_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
+							mysql_select_db("vagasweb") or die("Banco não encontrado");
+							mysql_set_charset("utf8");
+
+							$query = mysql_query("SELECT usuarios.nome,usuarios.idade, cidades.municipio, cursos.curso
+												FROM usuarios
+												INNER JOIN cidades
+												ON usuarios.cidade = cidades.idCidade
+												INNER JOIN cursos 
+												ON usuarios.curso = cursos.idCurso
+												WHERE usuarios.idUsuarios=2");
+
+							$dados = mysql_fetch_array($query);
+
+			return $dados;
+		}
 	
 	}
 ?>

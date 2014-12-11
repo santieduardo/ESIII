@@ -22,19 +22,39 @@
 				</ul>
 			</div>
 		</header>
-	
 		<main>
 			<section id="dados">
 				<article>
 					<div class="row">
 					<div class="col-md-2" id="dadosusuario">
+						<?php
+							include_once "classeBD.php";
+							
+							mysql_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
+							mysql_select_db("vagasweb") or die("Banco não encontrado");
+							mysql_set_charset("utf8");
+
+							$query = mysql_query("SELECT usuarios.nome,usuarios.idade, cidades.municipio, cursos.curso
+												FROM usuarios
+												INNER JOIN cidades
+												ON usuarios.cidade = cidades.idCidade
+												INNER JOIN cursos 
+												ON usuarios.curso = cursos.idCurso
+												WHERE usuarios.idUsuarios=2");
+
+							$dados = mysql_fetch_array($query);
+							
+							/*$dao = new classeBD();
+							$dados = $dao->retornaPainelUsuario();
+							*/
+						?>
 						<div class="panel panel-default">
 						  <div class="panel-heading">Painel do Usuário</div>
 						  <ul class="list-group">
-							<li class="list-group-item">Nome: </li>
-							<li class="list-group-item">Idade: </li>
-							<li class="list-group-item">Cidade: </li>
-							<li class="list-group-item">Curso: </li>
+						  	<li class="list-group-item"><label><?php echo 'Nome: '.$dados['nome'];?></label></li>
+						  	<li class="list-group-item"><label><?php echo 'Idade:'.$dados['idade'];?></label></li>
+						  	<li class="list-group-item"><label><?php echo 'Cidade:'.$dados['municipio'];?></label></li>
+						  	<li class="list-group-item"><label><?php echo 'Curso:'.$dados['curso'];?></label></li>
 						  </ul>
 						</div>
 					<div>
