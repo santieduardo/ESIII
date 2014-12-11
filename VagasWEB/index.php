@@ -110,6 +110,9 @@
 						
 						?>
 					</div>
+					<a href="logout.php">
+						<input type="button" name="sair" value="Logout">
+					</a>
 					<div class="col-md-4"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
 					</div>
