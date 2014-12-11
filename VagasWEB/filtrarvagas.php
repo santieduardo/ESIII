@@ -31,10 +31,10 @@
 						<div class="panel panel-default">
 						  <div class="panel-heading">Painel do Usuário</div>
 						  <ul class="list-group">
-							<li class="list-group-item"><label><?php echo 'Nome: '.$dados['nome'];?></label></li>
-						  	<li class="list-group-item"><label><?php echo 'Idade:'.$dados['idade'];?></label></li>
-						  	<li class="list-group-item"><label><?php echo 'Cidade:'.$dados['municipio'];?></label></li>
-						  	<li class="list-group-item"><label><?php echo 'Curso:'.$dados['curso'];?></label></li>
+							<li class="list-group-item">Nome: </li>
+							<li class="list-group-item">Idade: </li>
+							<li class="list-group-item">Cidade: </li>
+							<li class="list-group-item">Curso: </li>
 						  </ul>
 						</div>
 					<div>

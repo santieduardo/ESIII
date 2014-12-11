@@ -4,7 +4,7 @@ class Curso {
 	private $idCurso;
 	private $curso;
 	
-	public function __construct($id = 0, $curso = null){
+	public function __construct($id = "", $curso = ""){
 		$this->idCurso = $id;
 		$this->curso = $curso;
 	}
@@ -16,5 +16,7 @@ class Curso {
 	public function getCurso(){
 		return $this->curso;
 	}
+
+
 }
 ?>
