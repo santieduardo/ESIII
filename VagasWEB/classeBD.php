@@ -71,6 +71,7 @@ require_once "vaga.php";
 
 				session_start();
 				$validacao = 1;
+
 				$_SESSION['email'] = $email;
 				$_SESSION['idUsuarios'] = $registro['idUsuarios'];
 				$_SESSION['validacao'] = $validacao;
@@ -205,24 +206,28 @@ require_once "vaga.php";
 			}		
 		}
 
-		public function retornaPainelUsuario(){
+		public function retornaPainelUsuario($varID){			
+			mysql_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
+			mysql_select_db("vagasweb") or die("Banco não encontrado");
+			mysql_set_charset("utf8");
+			$query = mysql_query("SELECT usuarios.nome,usuarios.idade, cidades.municipio, cursos.curso
+								FROM usuarios
+								INNER JOIN cidades
+								ON usuarios.cidade = cidades.idCidade
+								INNER JOIN cursos 
+								ON usuarios.curso = cursos.idCurso
+								WHERE usuarios.idUsuarios=$varID");
 
-									
-							mysql_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
-							mysql_select_db("vagasweb") or die("Banco não encontrado");
-							mysql_set_charset("utf8");
-
-							$query = mysql_query("SELECT usuarios.nome,usuarios.idade, cidades.municipio, cursos.curso
-												FROM usuarios
-												INNER JOIN cidades
-												ON usuarios.cidade = cidades.idCidade
-												INNER JOIN cursos 
-												ON usuarios.curso = cursos.idCurso
-												WHERE usuarios.idUsuarios=2");
-
-							$dados = mysql_fetch_array($query);
-
+			$dados = mysql_fetch_array($query);
 			return $dados;
+		}
+		
+		public function retornaIdSessao(){
+			if($_SESSION['idUsuarios'] == null){
+				return "";
+			}else{
+				return $_SESSION['idUsuarios'];
+			}
 		}
 	
 	}

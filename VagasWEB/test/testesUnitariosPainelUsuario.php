@@ -1,31 +1,44 @@
 <?php
 
-	require_once "classeBD.php";
-	require_once "test\cidade.php";
-	require_once "test\curso.php";
-	require_once "test\usuarios.php";
+		require_once "classeBD.php";
+		require_once "cidade.php";
+		require_once "curso.php";
+		require_once "usuarios.php";
 
-	class testeVagaDisponibilidade extends PHPUnit_Framework_Testcase{
-
-
-		$usuario = new Usuario('1','Daew','Rua A','daew@daew.com.br','123456','20','1','1');
-		$curso = new Curso('1', 'ADS');
-		$cidade = new Cidade('1','viamao');
+	class testePainelUsuario extends PHPUnit_Framework_Testcase{
 		
+		
+			
 		public function testeNomeCorreto() {
-			$this->assertEquals('Daew', $usuario->getNome());
+			
+			$dao = new FuncoesBD();
+			$dados = $dao->getDadosPainel();
+		
+			$this->assertEquals('Eduardo Santi', $dados['nome']);
 		}
 
 		public function testeIdadeCorreta(){
-			$this->assertEquals('20', $usuario->getIdade());
+			
+			$dao = new FuncoesBD();
+			$dados = $dao->getDadosPainel();
+		
+			$this->assertEquals('20', $dados['idade']);
 		}
 
 		public function testeCidadeCorreta(){
-			$this->assertEquals('viamao', $cidade->getMunicipio());
+			
+			$dao = new FuncoesBD();
+			$dados = $dao->getDadosPainel();
+		
+			$this->assertEquals('Rio Grande', $dados['municipio']);
 		}
 
 		public function testeCursoCorreto(){
-			$this->assertEquals('ADS', $curso->getCurso());
+			
+			$dao = new FuncoesBD();
+			$dados = $dao->getDadosPainel();
+		
+			$this->assertEquals('Analise e Desenvolvimento de Sistemas', $dados['curso']);
 		}
 	}
 ?>

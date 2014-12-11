@@ -29,24 +29,10 @@
 					<div class="col-md-2" id="dadosusuario">
 						<?php
 							include_once "classeBD.php";
+						
+							$dao = new FuncoesBD();
+							$dados = $dao->retornaPainelUsuario(2);
 							
-							mysql_connect("localhost", "root", "") or die ("Falha na conexão com o Banco de Dados");
-							mysql_select_db("vagasweb") or die("Banco não encontrado");
-							mysql_set_charset("utf8");
-
-							$query = mysql_query("SELECT usuarios.nome,usuarios.idade, cidades.municipio, cursos.curso
-												FROM usuarios
-												INNER JOIN cidades
-												ON usuarios.cidade = cidades.idCidade
-												INNER JOIN cursos 
-												ON usuarios.curso = cursos.idCurso
-												WHERE usuarios.idUsuarios=2");
-
-							$dados = mysql_fetch_array($query);
-							
-							/*$dao = new classeBD();
-							$dados = $dao->retornaPainelUsuario();
-							*/
 						?>
 						<div class="panel panel-default">
 						  <div class="panel-heading">Painel do Usuário</div>
@@ -110,9 +96,6 @@
 						
 						?>
 					</div>
-					<a href="logout.php">
-						<input type="button" name="sair" value="Logout">
-					</a>
 					<div class="col-md-4"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
 					</div>
